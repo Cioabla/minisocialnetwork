@@ -12,7 +12,7 @@ class Article extends Model
     //protected $table = 'the_name_of_the_table;
 
     protected $fillable = [
-      'user_id' , 'content', 'live', 'post_on'
+      'user_id' , 'content', 'live', 'post_on' , 'title'
     ];
 
     protected  $dates = ['post_on','deleted_at'];
@@ -26,8 +26,12 @@ class Article extends Model
         return substr($this->content, 0 , random_int(150,250)).'...';
     }
 
-    public function setPostONAttribute($value)
+    public function setPostOnAttribute($value)
     {
         $this->attributes['post_on'] = Carbon::parse($value);
+    }
+
+    public function user(){
+       return $this->belongsTo(User::class);
     }
 }

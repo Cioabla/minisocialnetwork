@@ -10,9 +10,14 @@ use Auth;
 class ArticlesController extends Controller
 {
 
+    function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index()
     {
-        $articles = Article::paginate(10);
+        $articles = Article::orderBy('created_at','desc')->paginate(10);
 
         //$articles = Article::withTrashed()->paginate(10); Cu cele sterse cu soft
         //$articles = Article::onlyTrashed()->paginate(10); Cu cele sterse cu soft

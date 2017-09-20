@@ -6,7 +6,7 @@
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <span>
-                        Article by Cioabla Ionel Mihai
+                        {{ $article->user->name }}
 
                         <small>
                             <a href="/articles/{{ $article->id }}/edit">Edit</a>
@@ -17,6 +17,7 @@
                     </span>
                 </div>
                 <div class="panel-body">
+                    <b>Title: {{ $article->title }}</b><br>
                    {{ $article->content }}
                 </div>
             </div>

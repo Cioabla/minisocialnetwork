@@ -7,13 +7,17 @@
             <div class="col-md-4 col-md-offset-4">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <span>Cioabla</span>
+                        <span>
+                            {{ $article->user->name }}
+                        </span>
+
                         <span class="pull-right">
                             {{ $article->created_at->diffForHumans() }}
                         </span>
                     </div>
 
                     <div class="panel-body">
+                        <b>Title: {{ $article->title }}</b><br>
                         {{ $article->shortContent }}
 
                         <a href="/articles/{{ $article->id }}">Read more</a>
@@ -30,9 +34,11 @@
                                     Delete
                                 </button>
                             </form>
+                        @else
+                            <i class="fa fa-heart pull-right"></i>
                         @endif
 
-                        <i class="fa fa-heart pull-right"></i>
+
                     </div>
                 </div>
             </div>
