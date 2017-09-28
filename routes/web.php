@@ -22,3 +22,13 @@ Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
 Route::get('/profile/{username}', 'ProfileController@profile')->name('profile')->middleware('auth');
 
 Route::resource('articles','ArticlesController');
+
+Route::get('/profile/{username}/edit','ProfileController@edit');
+
+Route::post('/profile/{username}','ProfileController@update');
+
+Route::get('/article/userarticle','ArticlesController@userArticle');
+
+Route::get('/follow/{follow}' , 'FollowController@index');
+
+Route::get('/follow/{follow}/remove' , 'FollowController@remove');

@@ -1,5 +1,6 @@
 @extends('layouts.app')
 
+
 <style type="text/css">
     .profile-img {
         max-width: 150px;
@@ -19,10 +20,69 @@
                     <h1>{{ $user->name }}</h1>
                     <h5>{{  $user->email }}</h5>
                     <h5>{{ $user->dob }} ({{ Carbon\Carbon::createFromFormat('Y-m-d',$user->dob)->age }} years old)</h5>
+                    @if($user->id==Auth::id())
+                        <a href="/profile/{{ Auth::id() }}/edit">
+                            <button class="btn btn-succes">Edit</button>
+                        </a>
 
-                    <button class="btn btn-succes">Follow</button>
+                    @else
+
+                        @if($isFollow==0)
+                            <form class="button-form">
+                                <button class="btn btn-succes follow" data-id = '{{ $user->id }}'>Follow</button>
+                            </form>
+                        @else
+                            <form class="button-form">
+                                <button class="btn btn-succes unfollow" data-id = '{{ $user->id }}'>Unfollow</button>
+                            </form>
+                        @endif
+
+                    @endif
+
+
                 </div>
             </div>
         </div>
     </div>
+@endsection
+
+@section('script')
+
+    <script>
+
+        $(document).on('click','.follow' , function (e) {
+           e.preventDefault();
+
+           var userId = $(this).attr('data-id');
+
+           $.ajax({
+               type: 'GET',
+               url: '/follow/'+userId,
+               success: function (data) {
+
+                    $('.follow').remove();
+                    $('.button-form').append("<button class='btn btn-succes unfollow' data-id = "+data+">Unfollow</button>");
+               },
+               dataType: 'json',
+           });
+        });
+
+        $(document).on('click','.unfollow', function (e) {
+            e.preventDefault();
+
+           var userId = $(this).attr('data-id');
+
+           $.ajax({
+               type: 'GET' ,
+               url: '/follow/'+userId+'/remove',
+               success: function (data) {
+                   $('.unfollow').remove();
+                   $('.button-form').append("<button class='btn btn-succes follow' data-id = "+data+">Follow</button>")
+               },
+               dataType: 'json',
+           })
+        });
+
+    </script>
+
 @endsection

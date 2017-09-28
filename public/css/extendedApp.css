@@ -1,0 +1,26 @@
+div.menu{
+    padding: 0;
+}
+
+
+.menu-body {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.menu-body img {
+    display: inline-block;
+    height: 40px;
+    width: 40px;
+}
+
+.menu-body h4 {
+    display: inline-block;
+
+}
+
+div.menu-element {
+    width: 20%;
+    text-align: center;
+    display: inline-block;
+}

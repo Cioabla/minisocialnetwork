@@ -31,4 +31,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Article::class);
     }
+
+    public function follow()
+    {
+        return $this->hasMany(Follow::class);
+    }
 }

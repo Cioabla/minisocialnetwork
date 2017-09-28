@@ -95,6 +95,7 @@ class ArticlesController extends Controller
      */
     public function update(Request $request, $id)
     {
+
         $article = Article::findOrFail($id);
 
         if( ! isset($request->live))
@@ -103,6 +104,13 @@ class ArticlesController extends Controller
             $article->update($request->all());
 
         return redirect('/articles');
+    }
+
+    public function userArticle(){
+        $articles = Article::where('user_id',Auth::id())->orderBy('created_at','desc')->paginate(10);
+
+
+        return view('articles.myarticle',compact('articles'));
     }
 
     /**
@@ -116,6 +124,6 @@ class ArticlesController extends Controller
         $article = Article::findOrFail($id);
         $article->delete();
 
-        return redirect('/articles');
+        return response()->json($article->id);
     }
 }
