@@ -20,6 +20,7 @@ class CreateUsersTable extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->string('password');
+            $table->string('img')->default('https://www.accountingweb.com/sites/all/modules/custom/sm_pp_user_profile/img/default-user.png');
             $table->rememberToken();
             $table->timestamps();
         });

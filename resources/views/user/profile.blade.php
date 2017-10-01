@@ -15,7 +15,7 @@
         <div class="col-md-6 col-md-offset-3">
             <div class="panel panel-default">
                 <div class="panel-body text-center">
-                    <img class="profile-img" src="http://www.newsshare.in/wp-content/uploads/2017/04/Miniclip-8-Ball-Pool-Avatar-7.png">
+                    <img class="profile-img" src="{{ $user->img }}">
 
                     <h1>{{ $user->name }}</h1>
                     <h5>{{  $user->email }}</h5>
@@ -63,7 +63,7 @@
                     $('.follow').remove();
                     $('.button-form').append("<button class='btn btn-succes unfollow' data-id = "+data+">Unfollow</button>");
                },
-               dataType: 'json',
+               dataType: 'json'
            });
         });
 
@@ -79,7 +79,7 @@
                    $('.unfollow').remove();
                    $('.button-form').append("<button class='btn btn-succes follow' data-id = "+data+">Follow</button>")
                },
-               dataType: 'json',
+               dataType: 'json'
            })
         });
 

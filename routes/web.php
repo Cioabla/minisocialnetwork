@@ -32,3 +32,7 @@ Route::get('/article/userarticle','ArticlesController@userArticle');
 Route::get('/follow/{follow}' , 'FollowController@index');
 
 Route::get('/follow/{follow}/remove' , 'FollowController@remove');
+
+Route::get('/image/img','ImageController@index');
+
+Route::get('/follow','FollowController@my');

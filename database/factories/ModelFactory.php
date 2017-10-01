@@ -35,3 +35,4 @@ $factory->define(App\Article::class, function (Faker\Generator $faker) {
         'post_on' => Carbon\Carbon::parse('+1 week'),
     ];
 });
+

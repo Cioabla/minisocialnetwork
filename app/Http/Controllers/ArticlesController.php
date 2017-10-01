@@ -107,7 +107,7 @@ class ArticlesController extends Controller
     }
 
     public function userArticle(){
-        $articles = Article::where('user_id',Auth::id())->orderBy('created_at','desc')->paginate(10);
+        $articles = Article::where('user_id','=',Auth::id())->orderBy('created_at','desc')->paginate(10);
 
 
         return view('articles.myarticle',compact('articles'));
